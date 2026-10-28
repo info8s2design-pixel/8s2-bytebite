@@ -16,10 +16,14 @@ Puoi anche scaricare `index.html` e aprirlo nel browser per giocare offline.
 
 ## Versione
 
-**v3.3** — croce touch centrale per mobile e tablet, versione nel titolo della scheda, personaggi completi nelle schede Info, audio incorporati, bocca animata di Bix, suono e attesa alla perdita di una vita, interfaccia adattiva.
+**v3.4** — credito 8S2 Design nella home, croce touch centrale per mobile e tablet, versione nel titolo della scheda, personaggi completi nelle schede Info, audio incorporati, bocca animata di Bix, suono e attesa alla perdita di una vita, interfaccia adattiva.
 
 Il gioco, le immagini, i font e tutti gli audio sono incorporati in `index.html`. Il file può essere usato anche offline. Manifest, icone e service worker supportano l’installazione come app dal sito HTTPS.
 
 ## Supporto
 
 [Sostieni 8S2 ByteBite](https://www.paypal.com/paypalme/8s2design)
+
+## Autore
+
+Un gioco firmato [8S2 Design](https://8s2design.wixsite.com/home).
