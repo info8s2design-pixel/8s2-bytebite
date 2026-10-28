@@ -4,7 +4,9 @@ Arcade cyberpunk di **8S2 Design**. Aiuta **Bix** a recuperare i chip e salvare 
 
 ## Gioca
 
-Apri `index.html` nel browser oppure avvia il gioco dal sito GitHub Pages della repository.
+**[Gioca a 8S2 ByteBite](https://info8s2design-pixel.github.io/8s2-bytebite/)**
+
+Puoi anche scaricare `index.html` e aprirlo nel browser per giocare offline.
 
 - PC: frecce o WASD; P per la pausa.
 - Smartphone e tablet: pulsanti direzionali e swipe sul labirinto.
