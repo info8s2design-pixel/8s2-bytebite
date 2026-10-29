@@ -26,15 +26,23 @@ jobs:
           printf '%s\n' '{"private":true,"dependencies":{"@capacitor/core":"^7.4.0","@capacitor/android":"^7.4.0"},"devDependencies":{"@capacitor/cli":"^7.4.0"}}' > package.json
           npm install
           node -e 'const fs=require("fs");fs.writeFileSync("capacitor.config.json",JSON.stringify({appId:process.env.APP_ID,appName:process.env.APP_NAME,webDir:"www",server:{androidScheme:"https"}}))'
-          # Hide only the install-PWA control in the packaged Android copy.
-          # The GitHub Pages version remains untouched.
+          # Hide the install control only in the packaged HTML (not on GitHub Pages).
           node - <<'NODE'
-          const fs=require('fs');
-          const file='www/index.html';
-          let html=fs.readFileSync(file,'utf8');
-          const patch=`<style id="android-only-install-hide">#install-app{display:none!important}</style><script id="android-only-install-script">document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('button').forEach(function(button){if(/^\\s*(?:[↓⬇]\\s*)?installa\\s+(?:l['’])?app\\s*$/i.test(button.textContent||'')){button.style.setProperty('display','none','important');button.setAttribute('aria-hidden','true');}});});</script>`;
-          if(!html.includes('android-only-install-script'))html=html.replace(/<\\/head>/i,patch+'</head>');
-          if(!html.includes('android-only-install-script'))html=html.replace(/<body/i,patch+'<body');
+          const fs = require('fs');
+          const file = 'www/index.html';
+          let html = fs.readFileSync(file, 'utf8');
+          const css = '<style id="android-only-install-hide">#install-app{display:none!important}</style>';
+          const js = '<script id="android-only-install-script">document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll("button").forEach(function(b){var t=(b.textContent||"").trim().toLowerCase();if(t==="installa app"||t==="↓ installa app"||t==="⬇ installa app"){b.style.setProperty("display","none","important");b.setAttribute("aria-hidden","true");}});});</script>';
+          const patch = css + js;
+          if (!html.includes('android-only-install-script')) {
+            const headEnd = html.toLowerCase().indexOf('</head>');
+            if (headEnd !== -1) html = html.slice(0,headEnd) + patch + html.slice(headEnd);
+            else {
+              const bodyStart = html.toLowerCase().indexOf('<body');
+              if (bodyStart !== -1) html = html.slice(0,bodyStart) + patch + html.slice(bodyStart);
+              else html = patch + html;
+            }
+          }
           fs.writeFileSync(file,html);
           NODE
           npx cap add android
