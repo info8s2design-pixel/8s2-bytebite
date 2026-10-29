@@ -12,22 +12,22 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           cat > /tmp/release-notes.md <<'RELEASE_NOTES'
-# 8S2 ByteBite — Android
-
-**Un piccolo morso, una grande sfida arcade!**
-
-Pixel, riflessi e divertimento immediato in una sfida dal sapore old school.
-
-## Caratteristiche
-- Grafica pixel art rétro
-- Joystick virtuale e comandi touch
-- Statistiche e record dei giocatori
-- Interfaccia adattata ai dispositivi mobili
-- Giocabile offline, senza connessione Internet
-
-## Installazione Android
-Scarica il file APK dalla sezione **Assets** qui sotto e installalo sul dispositivo Android. Se Android richiede un'autorizzazione per installare app da questa fonte, concedila soltanto se ti fidi del file scaricato da questa release ufficiale.
-
-**Sviluppato da 8S2 Design.**
-RELEASE_NOTES
+          # 8S2 ByteBite — Android
+          
+          **Un piccolo morso, una grande sfida arcade!**
+          
+          Pixel, riflessi e divertimento immediato in una sfida dal sapore old school.
+          
+          ## Caratteristiche
+          - Grafica pixel art rétro
+          - Joystick virtuale e comandi touch
+          - Statistiche e record dei giocatori
+          - Interfaccia adattata ai dispositivi mobili
+          - Giocabile offline, senza connessione Internet
+          
+          ## Installazione Android
+          Scarica il file APK dalla sezione **Assets** qui sotto e installalo sul dispositivo Android.
+          
+          **Sviluppato da 8S2 Design.**
+          RELEASE_NOTES
           gh release edit "android-v1.0" --repo "${{ github.repository }}" --notes-file /tmp/release-notes.md
